@@ -1,0 +1,29 @@
+.App {
+  margin-top: 66px;
+  margin-bottom: 72px;
+}
+
+#container {
+  height: calc(100vh - 410px);
+  overflow-y: scroll;
+}
+
+#container::-webkit-scrollbar {
+  width: 7px;
+}
+
+#container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0);
+}
+
+#container::-webkit-scrollbar-thumb {
+  background: grey;
+}
+
+#container::-webkit-scrollbar-thumb:hover {
+  background: rgb(56, 56, 56);
+}
+
+.bi-x:hover {
+  color: red;
+}
