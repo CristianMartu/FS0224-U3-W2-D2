@@ -2,11 +2,11 @@ import { useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
 const URL = 'https://striveschool-api.herokuapp.com/api/comments/'
 
-const AddComment = (props) => {
+const AddComment = ({ asin }) => {
   const [comment, setComment] = useState({
     comment: '',
     rate: 1,
-    elementId: props.asin,
+    elementId: null,
   })
 
   const sendComment = async (e) => {
@@ -22,14 +22,14 @@ const AddComment = (props) => {
         },
       })
       if (response.ok) {
-        alert('Recensione inviata!')
+        alert('Review submitted!')
         setComment({
           comment: '',
           rate: 1,
-          elementId: props.asin,
+          elementId: null,
         })
       } else {
-        throw new Error('Qualcosa è andato storto')
+        throw new Error('Error in sending!')
       }
     } catch (error) {
       alert(error)
@@ -38,7 +38,7 @@ const AddComment = (props) => {
 
   return (
     <div className="my-3 mx-3">
-      <Form onSubmit={sendComment}>
+      <Form onSubmit={asin ? sendComment : (e) => e.preventDefault()}>
         <Form.Group className="mb-2">
           <Form.Label>Review</Form.Label>
           <Form.Control
@@ -49,6 +49,7 @@ const AddComment = (props) => {
               setComment({
                 ...comment,
                 comment: e.target.value,
+                elementId: asin,
               })
             }
           />
@@ -62,6 +63,7 @@ const AddComment = (props) => {
               setComment({
                 ...comment,
                 rate: e.target.value,
+                elementId: asin,
               })
             }
           >

@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <MyNav name="EpiBooks" />
-      <Container>
+      <Container fluid>
         {/* <Welcome /> */}
         <BookList data={allBooks} />
       </Container>
