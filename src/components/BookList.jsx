@@ -17,7 +17,7 @@ const BookList = (props) => {
 
   const filteredBooks = list.filter((book) => book.title.toLowerCase().includes(search.toLowerCase()))
   return (
-    <Container fluid>
+    <>
       <ButtonGroup className="mt-2">
         <DropdownButton as={ButtonGroup} title="Category" id="bg-nested-dropdown" variant="dark">
           <Dropdown.Item eventKey="1" onClick={() => setGenre('fantasy')}>
@@ -51,8 +51,11 @@ const BookList = (props) => {
         placeholder="Search book..."
       />
       <Row>
-        <Col md={9}>
-          <Row sm={1} md={2} lg={3} xl={4} className="justify-content-center mt-5 row-gap-3" id="container">
+        <Col md={8}>
+          <div
+            className="d-flex flex-wrap justify-content-center align-items-baseline mt-5 row-gap-4 column-gap-3"
+            id="container"
+          >
             {genre !== 'all'
               ? filteredBooks
                   .filter((book) => book.category === genre)
@@ -72,14 +75,14 @@ const BookList = (props) => {
                     changeSelectedBook={changeSelectedBook}
                   />
                 ))}
-          </Row>
+          </div>
         </Col>
-        <Col md={3} className="mt-5 row-gap-3">
+        <Col md={4} className="mt-5 row-gap-3">
           {/* {selectedBook && <CommentArea bookId={selectedBook} />} */}
           <CommentArea bookId={selectedBook} />
         </Col>
       </Row>
-    </Container>
+    </>
   )
 }
 

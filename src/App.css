@@ -4,7 +4,7 @@
 }
 
 #container {
-  height: calc(100vh - 410px);
+  height: 67vh;
   overflow-y: scroll;
 }
 
@@ -26,4 +26,41 @@
 
 .bi-x:hover {
   color: red;
+}
+
+.cardContainerImg {
+  height: 400px;
+}
+
+.imageCard {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cardTitle {
+  max-width: 250px;
+  max-height: 2.5rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  line-height: 1.2rem;
+  font-size: 1.2rem;
+
+  transition: max-height 2s;
+}
+
+.cardTitle:hover {
+  animation: expandText 2s 0.5s forwards;
+}
+
+@keyframes expandText {
+  0% {
+    max-height: 2.5rem;
+    -webkit-line-clamp: unset;
+  }
+  100% {
+    max-height: 200px;
+    -webkit-line-clamp: unset;
+  }
 }
